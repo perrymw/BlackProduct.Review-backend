@@ -14,25 +14,25 @@ dependencies are needed.  Poetry is better for collaborative work, but pyenv
 best for deployment as Heroku has build packs that supplement pyenv, but not poetry.  That being said, Here is what we are going for in terms of fields:
 
 1) Business (model)
-   -owner
-   -urlfield
-   -emailfield
-   -address
+   -owner.
+   -urlfield.
+   -emailfield.
+   -address.
 2) Product (model)
-   -like and dislike(field)
-   -rating(field)
-   -business
-   -market
-   -product type
-   -file upoloading
-   -urlfield
-   -reviews
-   -tag
-   -times viewed
+   -like and dislike(field).
+   -rating(field).
+   -business.
+   -market.
+   -product type.
+   -file upoloading.
+   -urlfield.
+   -reviews.
+   -tag.
+   -times viewed.
 3) Reviews (model)
-   -Like and dislike (field)
-   -rating
-   -CustomStaffUser  
+   -Like and dislike (field.
+   -rating.
+   -CustomStaffUser.
 
 4) CustomStaffUser
 

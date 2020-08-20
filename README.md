@@ -14,6 +14,7 @@ dependencies are needed.  Poetry is better for collaborative work, but pyenv
 best for deployment as Heroku has build packs that supplement pyenv, but not poetry.  That being said, Here is what we are going for in terms of fields:
 
 1) Business (model)
+
    -owner
    
    -urlfield
@@ -23,7 +24,9 @@ best for deployment as Heroku has build packs that supplement pyenv, but not poe
    -address
  
 2) Product (model)
-   -like and dislike(field).
+
+   -like and dislike(field)
+   
    -rating(field)
    
    -business
@@ -43,6 +46,7 @@ best for deployment as Heroku has build packs that supplement pyenv, but not poe
    -times viewed
    
 3) Reviews (model)
+
    -Like and dislike (field
    
    -rating

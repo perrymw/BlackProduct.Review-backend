@@ -5,7 +5,8 @@ pyenv for this project due to deployment ease.  Make sure to follow these
 steps:  
 
 1) make sure pip is up to date
-2) source blackpriduct.review/bin/activate to activate the virtual environment 
+2) install python 3.8.5
+3) run virtual environment with pipenv shellsd
 
 The reason why we can get it off the ground like this is because we are 
 starting our development period right now and it would be best for everyone to 
@@ -52,6 +53,8 @@ best for deployment as Heroku has build packs that supplement pyenv, but not poe
    -rating
    
    -CustomStaffUser
+
+   -Time Posted
 
 4) CustomStaffUser
 

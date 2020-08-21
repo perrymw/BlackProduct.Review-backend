@@ -6,7 +6,7 @@ steps:
 
 1) make sure pip is up to date
 2) install python 3.8.5
-3) run virtual environment with pipenv shellsd
+3) run virtual environment with pipenv shell
 
 The reason why we can get it off the ground like this is because we are 
 starting our development period right now and it would be best for everyone to 

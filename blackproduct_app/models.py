@@ -22,6 +22,20 @@ class Business(models.Model):
     date = models.DateTimeField(default=timezone.now)
 
 
+class BPRUser(AbstractUser):
+    email = models.EmailField(max_length=254, null=False)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    date_joined = models.DateTimeField(default=timezone.now)
+
+
+class Reviews(models.Model):
+    # TODO Rating system for comment   
+    content = models.TextField(null=False)
+    reviewer = models.ForeignKey(BPRUser, on_delete=models.CASCADE)
+    date_posted = models.DateTimeField(default=timezone.now)
+
+
 class Product(models.Model):
     like_or_dislike = models.BooleanField(default=True)
     owned_by = models.ForeignKey(Business, on_delete=models.CASCADE)
@@ -30,11 +44,13 @@ class Product(models.Model):
     # https://dev.to/coderasha/how-to-add-tags-to-your-models-in-django-django-packages-series-1-3704
     tags = TaggableManager()
     posted_date = models.DateTimeField(default=timezone.now)
+    photo = models.FileField(upload_to='media', max_length=1001)
     traffic = models.IntegerField()
+    rewiew = models.ForeignKey(Reviews, on_delete=models.CASCADE)
 
 
-class BPRUser(AbstractUser):
-    email = models.EmailField(max_length=254, null=False)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(default=timezone.now)
+class Comment(models.Model):
+    content = models.TextField(null=False)
+    commenter = models.ForeignKey(BPRUser, on_delete=models.CASCADE)
+
+

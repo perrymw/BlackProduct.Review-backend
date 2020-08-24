@@ -7,9 +7,11 @@ verify_ssl = true
 
 [packages]
 django = "*"
-Pillow = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
+django-countries = "*"
+django-taggit = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"

@@ -58,5 +58,7 @@ best for deployment as Heroku has build packs that supplement pyenv, but not poe
 
 4) CustomStaffUser
 
+   -rating
+
 5) Market
    - How many times something was searched

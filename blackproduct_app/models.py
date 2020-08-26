@@ -30,7 +30,7 @@ class BPRUser(AbstractUser):
 
 
 class Reviews(models.Model):
-    # TODO Rating system for comment   
+    # TODO Rating system for review
     content = models.TextField(null=False)
     reviewer = models.ForeignKey(BPRUser, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default=timezone.now)
@@ -46,7 +46,10 @@ class Product(models.Model):
     posted_date = models.DateTimeField(default=timezone.now)
     photo = models.FileField(upload_to='media', max_length=1001)
     traffic = models.IntegerField()
-    rewiew = models.ForeignKey(Reviews, on_delete=models.CASCADE)
+    # TODO Rating system for review
+    review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
+    rating = models.OneToOneField(BPRUser, on_delete=models.CASCADE, unique=True)
+
 
 
 class Comment(models.Model):

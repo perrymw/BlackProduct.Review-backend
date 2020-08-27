@@ -12,7 +12,7 @@ class BusinessAddressViewSet(viewsets.ModelViewSet):
 
 
 class BusinessViewSet(viewsets.ModelViewSet):
-    queryset = models.Business.objects.all()
+    queryset = models.Business.objects.all().order_by('-id')
     serializer_class = serializers.BusinessSerializer
 
 
@@ -22,7 +22,7 @@ class BPRUserViewSet(viewsets.ModelViewSet):
 
 
 class ReviewsViewSet(viewsets.ModelViewSet):
-    queryset = models.Reviews.objects.all()
+    queryset = models.Reviews.objects.all().order_by('-date_posted')
     serializer_class = serializers.ReviewsSerializer
 
 

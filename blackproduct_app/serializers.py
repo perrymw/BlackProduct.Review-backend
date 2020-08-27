@@ -11,6 +11,7 @@ class BusinessAddressSerializer(HyperlinkedModelSerializer):
             'address',
             'zip_code',
             'city',
+            'state',
             'country'
         ]
 

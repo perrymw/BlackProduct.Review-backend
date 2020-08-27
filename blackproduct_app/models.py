@@ -6,18 +6,18 @@ from django.contrib.auth.models import AbstractUser
 
 
 class BusinessAddress(models.Model):
-     address = models.CharField(max_length=1000, null=False)
-     zip_code = models.CharField(max_length=15, null=False)
-     city = models.CharField(max_length=1000, null=False)
+    address = models.CharField(max_length=1000, null=False)
+    zip_code = models.CharField(max_length=15, null=False)
+    city = models.CharField(max_length=1000, null=False)
     #  https://github.com/SmileyChris/django-countries
-     country = CountryField()
+    country = CountryField()
 
 
 class Business(models.Model):
     name = models.TextField()
     owner = models.TextField()
     website = models.URLField(max_length=200, null=False)
-    email = models.EmailField( max_length=254, null=False)
+    email = models.EmailField(max_length=254, null=False)
     address = models.OneToOneField(BusinessAddress, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
 
@@ -30,7 +30,7 @@ class BPRUser(AbstractUser):
 
 
 class Reviews(models.Model):
-    # TODO Rating system for comment   
+    # TODO Rating system for comment
     content = models.TextField(null=False)
     reviewer = models.ForeignKey(BPRUser, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default=timezone.now)
@@ -46,11 +46,9 @@ class Product(models.Model):
     posted_date = models.DateTimeField(default=timezone.now)
     photo = models.FileField(upload_to='media', max_length=1001)
     traffic = models.IntegerField()
-    rewiew = models.ForeignKey(Reviews, on_delete=models.CASCADE)
+    review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
     content = models.TextField(null=False)
     commenter = models.ForeignKey(BPRUser, on_delete=models.CASCADE)
-
-

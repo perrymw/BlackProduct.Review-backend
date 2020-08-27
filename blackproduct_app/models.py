@@ -10,7 +10,7 @@ class BusinessAddress(models.Model):
     address = models.CharField(max_length=1000, null=False)
     zip_code = models.CharField(max_length=15, null=False)
     city = models.CharField(max_length=1000, null=False)
-    state = models.CharField( choices=STATE_CHOICES,max_length=2)
+    state = models.CharField(choices=STATE_CHOICES,max_length=2)
     #  https://github.com/SmileyChris/django-countries
     country = CountryField()
 

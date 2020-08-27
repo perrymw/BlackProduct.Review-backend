@@ -61,7 +61,7 @@ CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
 
-ROOT_URLCONF = 'BlackProduct.urls'
+ROOT_URLCONF = 'blackproduct.urls'
 
 TEMPLATES = [
     {
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'BlackProduct.wsgi.application'
+WSGI_APPLICATION = 'blackproduct.wsgi.application'
 
 
 # Database

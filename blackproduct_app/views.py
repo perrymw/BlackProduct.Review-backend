@@ -11,7 +11,7 @@ class BusinessAddressViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.BusinessAddressSerializer
 
 
-class BusinessSerializerViewSet(viewsets.ModelViewSet):
+class BusinessViewSet(viewsets.ModelViewSet):
     queryset = models.Business.all()
     serializer_class = serializers.BusinessSerializer
 

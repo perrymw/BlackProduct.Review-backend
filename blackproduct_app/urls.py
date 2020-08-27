@@ -15,17 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url, include
+from blackproduct_app import views
+from django.conf.urls import include, url
 from rest_framework import routers
-from blackproduct_app.views import *
 
+
+# routers will go here
 router = routers.DefaultRouter()
-router.register(r'business_address',BusinessAddressViewSet )
-router.register(r'business_info',BusinessViewSet )
-router.register(r'users',BPRUserViewSet )
-router.register(r'reviews',ReviewsViewSet )
-router.register(r'products', ProductViewSet )
-router.register(r'comments',CommentViewSet )
+router.register(r'businessaddress', views.BusinessAddressViewSet)
+router.register(r'business', views.BusinessViewSet)
+router.register(r'bpruser', views.BPRUserViewSet)
+router.register(r'reviews', views.ReviewsViewSet)
+router.register(r'product', views.ProductViewSet)
+router.register(r'comment', views.CommentViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include(router.urls))

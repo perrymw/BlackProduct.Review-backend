@@ -44,7 +44,7 @@ class Product(models.Model):
     # https://dev.to/coderasha/how-to-add-tags-to-your-models-in-django-django-packages-series-1-3704
     tags = TaggableManager()
     posted_date = models.DateTimeField(default=timezone.now)
-    photo = models.FileField(upload_to='media', max_length=1001)
+    photo = models.ImageField(upload_to='images/', max_length=1001)
     traffic = models.IntegerField()
     # TODO Rating system for review
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE)

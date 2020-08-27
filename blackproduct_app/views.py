@@ -7,30 +7,30 @@ from blackproduct_app import models, serializers
 
 
 class BusinessAddressViewSet(viewsets.ModelViewSet):
-    queryset = models.BusinessAddress.all()
+    queryset = models.BusinessAddress.objects.all()
     serializer_class = serializers.BusinessAddressSerializer
 
 
 class BusinessViewSet(viewsets.ModelViewSet):
-    queryset = models.Business.all()
+    queryset = models.Business.objects.all()
     serializer_class = serializers.BusinessSerializer
 
 
 class BPRUserViewSet(viewsets.ModelViewSet):
-    queryset = models.BPRUser.all()
+    queryset = models.BPRUser.objects.all()
     serializer_class = serializers.BPRUserSerializer
 
 
 class ReviewsViewSet(viewsets.ModelViewSet):
-    queryset = models.Reviews.all()
+    queryset = models.Reviews.objects.all()
     serializer_class = serializers.ReviewsSerializer
 
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = models.Product.all()
+    queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
 
 
 class CommentViewSet(viewsets.ModelViewSet):
-    queryset = models.Comment.all()
+    queryset = models.Comment.objects.all()
     serializer_class = serializers.CommentSerializer

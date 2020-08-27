@@ -34,10 +34,12 @@ class BPRUserSerializer(HyperlinkedModelSerializer):
         model = models.BPRUser
         fields = [
             'id',
+            'username',
+            'password',
             'email',
             'is_staff',
             'is_active',
-            'joined'
+            'date_joined'
         ]
 
 

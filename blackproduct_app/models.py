@@ -14,14 +14,21 @@ class BusinessAddress(models.Model):
     #  https://github.com/SmileyChris/django-countries
     country = CountryField()
 
+    def __str__(self):
+        return self.address
+    
+
 
 class Business(models.Model):
     name = models.TextField()
     owner = models.TextField()
-    website = models.URLField(max_length=200, null=False)
-    email = models.EmailField(max_length=254, null=False)
+    website = models.URLField(max_length=200,blank=True)
+    email = models.EmailField(max_length=254, blank=False)
     address = models.OneToOneField(BusinessAddress, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
 
 
 class BPRUser(AbstractUser):
@@ -52,7 +59,7 @@ class Product(models.Model):
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
     rating = models.OneToOneField(BPRUser, on_delete=models.CASCADE, unique=True)
 
-
+# 
 
 class Comment(models.Model):
     content = models.TextField(null=False)

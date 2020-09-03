@@ -14,6 +14,7 @@ class BusinessAddressViewSet(viewsets.ModelViewSet):
 class BusinessViewSet(viewsets.ModelViewSet):
     queryset = models.Business.objects.all().order_by('-id')
     serializer_class = serializers.BusinessSerializer
+    lookup_fields = "name"
 
 
 class BPRUserViewSet(viewsets.ModelViewSet):

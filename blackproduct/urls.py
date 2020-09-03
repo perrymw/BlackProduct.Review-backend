@@ -21,7 +21,7 @@ from blackproduct_app.views import *
 
 router = routers.DefaultRouter()
 router.register(r'business_address',BusinessAddressViewSet )
-router.register(r'business_info',BusinessViewSet )
+router.register(r'business',BusinessViewSet )
 router.register(r'users',BPRUserViewSet )
 router.register(r'reviews',ReviewsViewSet )
 router.register(r'products', ProductViewSet )

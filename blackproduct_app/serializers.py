@@ -28,6 +28,7 @@ class BusinessSerializer(HyperlinkedModelSerializer):
             'address',
             'date'
         ]
+    address = BusinessAddressSerializer()
 
 
 class BPRUserSerializer(HyperlinkedModelSerializer):
@@ -65,6 +66,8 @@ class ProductSerializer(HyperlinkedModelSerializer):
             'product_link',
             'tags',
             'posted_date',
+            'rating',
+            'review',
             'photo',
             'traffic',
             'review'

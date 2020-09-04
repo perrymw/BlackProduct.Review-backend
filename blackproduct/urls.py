@@ -24,9 +24,9 @@ router.register(r'business_address',BusinessAddressViewSet )
 router.register(r'business',BusinessViewSet, basename='name')
 router.register(r'users',BPRUserViewSet )
 router.register(r'reviews',ReviewsViewSet )
-router.register(r'products', ProductViewSet , basename='')
+router.register(r'products', ProductViewSet , basename='product_name')
 router.register(r'comments',CommentViewSet )
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', include(router.urls))
+    url(r'^bp.review/', include(router.urls))
 ]

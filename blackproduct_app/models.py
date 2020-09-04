@@ -16,7 +16,6 @@ class BusinessAddress(models.Model):
 
     def __str__(self):
         return self.address
-    
 
 
 class Business(models.Model):
@@ -53,7 +52,7 @@ class Product(models.Model):
     # TODO: make field choices for choicefield of types of products
     product_link = models.URLField(max_length=2000, default=None)
     # https://dev.to/coderasha/how-to-add-tags-to-your-models-in-django-django-packages-series-1-3704
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
     posted_date = models.DateTimeField(default=timezone.now)
     photo = models.ImageField(upload_to='images/', max_length=1001)
     traffic = models.IntegerField(default=0)
@@ -61,7 +60,17 @@ class Product(models.Model):
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE, blank=True, null=True)
     rating = models.OneToOneField(BPRUser, on_delete=models.CASCADE, unique=True, blank=True, null=True)
 
-# 
+    def __str__(self):
+        return self.product_name
+    
+    def get_tags_display(self):
+        return self.tags.values_list('name', flat=True)
+
+    @property
+    def owner_name(self):
+        return self.owner.name
+
+
 
 class Comment(models.Model):
     content = models.TextField(null=False)

@@ -1,6 +1,6 @@
 # from django.shortcuts import render
 from rest_framework import viewsets
-
+from django.http import JsonResponse
 from blackproduct_app import models, serializers
 
 
@@ -34,15 +34,16 @@ class ReviewsViewSet(viewsets.ModelViewSet):
 
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = models.Product.objects.all()
+    basename = 'products'
+    queryset = models.Product.objects.all().order_by('-product_name')
     serializer_class = serializers.ProductSerializer
-
     def get_queryset(self):
-        queryset = models.Business.objects.all()
+        queryset = models.Product.objects.all().order_by('-product_name')
         method = self.request.query_params.get('product_name')
         return queryset
-    lookup_field = 'product_name'
 
+    lookup_field = 'product_name'
+    
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = models.Comment.objects.all()

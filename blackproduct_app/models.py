@@ -64,7 +64,7 @@ class Product(models.Model):
         return self.product_name
     
     def get_tags_display(self):
-        return self.tags.values_list('name', flat=True)
+        return self.tags.values_list('tags', flat=True)
 
     @property
     def owner_name(self):

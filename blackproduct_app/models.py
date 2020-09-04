@@ -36,6 +36,7 @@ class BPRUser(AbstractUser):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
+    display_name = models.CharField(max_length=100)
 
 
 class Reviews(models.Model):
@@ -46,18 +47,19 @@ class Reviews(models.Model):
 
 
 class Product(models.Model):
+    product_name = models.TextField()
     like_or_dislike = models.BooleanField(default=True)
-    owned_by = models.ForeignKey(Business, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Business, on_delete=models.CASCADE)
     # TODO: make field choices for choicefield of types of products
     product_link = models.URLField(max_length=2000, default=None)
     # https://dev.to/coderasha/how-to-add-tags-to-your-models-in-django-django-packages-series-1-3704
     tags = TaggableManager()
     posted_date = models.DateTimeField(default=timezone.now)
     photo = models.ImageField(upload_to='images/', max_length=1001)
-    traffic = models.IntegerField()
+    traffic = models.IntegerField(default=0)
     # TODO Rating system for review
-    review = models.ForeignKey(Reviews, on_delete=models.CASCADE)
-    rating = models.OneToOneField(BPRUser, on_delete=models.CASCADE, unique=True)
+    review = models.ForeignKey(Reviews, on_delete=models.CASCADE, blank=True, null=True)
+    rating = models.OneToOneField(BPRUser, on_delete=models.CASCADE, unique=True, blank=True, null=True)
 
 # 
 

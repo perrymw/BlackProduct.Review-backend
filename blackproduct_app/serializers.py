@@ -6,15 +6,7 @@ from blackproduct_app import models
 class BusinessAddressSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = models.BusinessAddress
-        fields = [
-            'id',
-            'address',
-            'zip_code',
-            'city',
-            'state',
-            'country'
-        ]
-
+        fields = '__all__'
 
 class BusinessSerializer(HyperlinkedModelSerializer):
     class Meta:
@@ -54,6 +46,7 @@ class ReviewsSerializer(HyperlinkedModelSerializer):
             'reviewer',
             'date_posted'
         ]
+    reviewer = BPRUserSerializer()
 
 
 class ProductSerializer(HyperlinkedModelSerializer):
@@ -61,8 +54,7 @@ class ProductSerializer(HyperlinkedModelSerializer):
         model = models.Product
         fields = [
             'id',
-            'like_or_dislike',
-            'owned_by',
+            'owner',
             'product_link',
             'tags',
             'posted_date',
@@ -70,8 +62,11 @@ class ProductSerializer(HyperlinkedModelSerializer):
             'review',
             'photo',
             'traffic',
-            'review'
+            'review',
+            'like_or_dislike',
         ]
+    review = ReviewsSerializer()
+    rating = BPRUserSerializer()
 
 
 class CommentSerializer(HyperlinkedModelSerializer):
@@ -82,3 +77,4 @@ class CommentSerializer(HyperlinkedModelSerializer):
             'content',
             'commenter'
         ]
+    commenter = BPRUserSerializer()

@@ -1,4 +1,4 @@
-from rest_framework.serializers import HyperlinkedModelSerializer, ListField, CharField
+from rest_framework.serializers import *
 from blackproduct_app import models
 # Serializers using the current models as of 08/26
 
@@ -20,7 +20,7 @@ class BusinessSerializer(HyperlinkedModelSerializer):
             'address',
             'date'
         ]
-    address = BusinessAddressSerializer()
+
 
 
 class BPRUserSerializer(HyperlinkedModelSerializer):
@@ -37,7 +37,7 @@ class BPRUserSerializer(HyperlinkedModelSerializer):
         ]
 
 
-class ReviewsSerializer(HyperlinkedModelSerializer):
+class ReviewsSerializer(ModelSerializer):
     class Meta:
         model = models.Reviews
         fields = [
@@ -46,7 +46,7 @@ class ReviewsSerializer(HyperlinkedModelSerializer):
             'reviewer',
             'date_posted'
         ]
-    reviewer = BPRUserSerializer()
+
 
 
 class TagListField(ListField):
@@ -55,7 +55,7 @@ class TagListField(ListField):
     def to_representation(self, data):
         return ' '.join(data.values_list('name', flat=True))
 
-class ProductSerializer(HyperlinkedModelSerializer):
+class ProductSerializer(ModelSerializer):
     class Meta:
         model = models.Product
         fields = [
@@ -73,12 +73,10 @@ class ProductSerializer(HyperlinkedModelSerializer):
             'like_or_dislike',
         ]
     tags = TagListField()
-    owner = BusinessSerializer()
-    review = ReviewsSerializer()
-    rating = BPRUserSerializer()
 
 
-class CommentSerializer(HyperlinkedModelSerializer):
+
+class CommentSerializer(ModelSerializer):
     class Meta:
         model = models.Comment
         fields = [
@@ -86,4 +84,3 @@ class CommentSerializer(HyperlinkedModelSerializer):
             'content',
             'commenter'
         ]
-    commenter = BPRUserSerializer()

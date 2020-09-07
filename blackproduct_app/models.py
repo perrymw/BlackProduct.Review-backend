@@ -23,7 +23,7 @@ class Business(models.Model):
     owner = models.TextField()
     website = models.URLField(max_length=200,blank=True)
     email = models.EmailField(max_length=254, blank=False)
-    address = models.OneToOneField(BusinessAddress, on_delete=models.CASCADE)
+    address = models.OneToOneField(BusinessAddress, on_delete=models.CASCADE, null=False)
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -58,7 +58,7 @@ class Product(models.Model):
     traffic = models.IntegerField(default=0)
     # TODO Rating system for review
     review = models.ForeignKey(Reviews, on_delete=models.CASCADE, blank=True, null=True)
-    rating = models.OneToOneField(BPRUser, on_delete=models.CASCADE, unique=True, blank=True, null=True)
+    rating = models.ForeignKey(BPRUser, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.product_name

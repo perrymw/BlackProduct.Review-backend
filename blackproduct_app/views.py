@@ -1,5 +1,6 @@
 # from django.shortcuts import render
 from rest_framework import viewsets
+from django.http import JsonResponse
 from blackproduct_app import models, serializers
 
 
@@ -12,9 +13,15 @@ class BusinessAddressViewSet(viewsets.ModelViewSet):
 
 
 class BusinessViewSet(viewsets.ModelViewSet):
-    queryset = models.Business.objects.all().order_by('-id')
     serializer_class = serializers.BusinessSerializer
+    # Help acquired from Joe Kaufeld
+    basename = 'business'
 
+    def get_queryset(self):
+        queryset = models.Business.objects.all().order_by('-name')
+        method = self.request.query_params.get('name')
+        return queryset
+    lookup_field = 'name'
 
 class BPRUserViewSet(viewsets.ModelViewSet):
     queryset = models.BPRUser.objects.all()
@@ -27,9 +34,16 @@ class ReviewsViewSet(viewsets.ModelViewSet):
 
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = models.Product.objects.all()
+    basename = 'products'
+    queryset = models.Product.objects.all().order_by('-product_name')
     serializer_class = serializers.ProductSerializer
+    def get_queryset(self):
+        queryset = models.Product.objects.all().order_by('-product_name')
+        method = self.request.query_params.get('product_name')
+        return queryset
 
+    lookup_field = 'product_name'
+    
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = models.Comment.objects.all()

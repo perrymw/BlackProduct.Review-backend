@@ -15,6 +15,7 @@ django-countries = "*"
 django-taggit = "*"
 pillow = "*"
 django-localflavor = "*"
+django-cities = "*"
 
 [requires]
 python_version = "3.8.5"

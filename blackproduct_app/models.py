@@ -36,6 +36,8 @@ class BPRUser(AbstractUser):
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
     display_name = models.CharField(max_length=100)
+    saved_products = models.ManyToManyField('Product', related_name='favorites')
+    saved_businesses = models.ManyToManyField('Business', related_name='favoritebusinesses+', symmetrical=False)
 
 
 class Reviews(models.Model):

@@ -39,7 +39,6 @@ class BPRUser(AbstractUser):
 
 
 class Reviews(models.Model):
-    # TODO Rating system for review
     content = models.TextField(null=False)
     reviewer = models.ForeignKey(BPRUser, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default=timezone.now)
@@ -56,15 +55,23 @@ class Product(models.Model):
     posted_date = models.DateTimeField(default=timezone.now)
     photo = models.ImageField(upload_to='images/', max_length=1001)
     traffic = models.IntegerField(default=0)
-    # TODO Rating system for review
-    review = models.ForeignKey(Reviews, on_delete=models.CASCADE, blank=True, null=True)
-    rating = models.ForeignKey(BPRUser, on_delete=models.CASCADE, blank=True, null=True)
+    ratings = models.ManyToManyField(BPRUser, through="Rating", )
+    review = models.ForeignKey('Reviews', related_name='review',on_delete=models.CASCADE, blank=True, null=True)
+
+
 
     def __str__(self):
         return self.product_name
     
     def get_tags_display(self):
         return self.tags.values_list('tags', flat=True)
+
+    @property
+    def average_rating(self):
+        total = 0
+        for rating in self.ratings:
+            total += rating.rating_sys
+        return total/len(self.ratings)
 
     @property
     def owner_name(self):
@@ -75,3 +82,13 @@ class Product(models.Model):
 class Comment(models.Model):
     content = models.TextField(null=False)
     commenter = models.ForeignKey(BPRUser, on_delete=models.CASCADE)
+
+
+class Rating(models.Model):
+    rating_system_choices = [(num,str(num)) for num in range(1,6)]
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    rater = models.ForeignKey(BPRUser, on_delete=models.CASCADE)
+    rating_sys = models.IntegerField(choices=rating_system_choices, default=1)
+
+    class meta:
+        unique_together = ('product','rater')

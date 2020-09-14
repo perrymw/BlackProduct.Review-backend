@@ -47,10 +47,16 @@ class Reviews(models.Model):
 
 
 class Product(models.Model):
+    product_type_choices = [
+        ('HCSC', 'Hair Care/Skincare'),
+        ('HHS', 'Household Staples'),
+        ('F&D', 'Food & Drink'),
+    ]
     product_name = models.TextField()
     like_or_dislike = models.BooleanField(default=True)
     owner = models.ForeignKey(Business, on_delete=models.CASCADE)
     # TODO: make field choices for choicefield of types of products
+    product_choice = models.CharField(choices=product_type_choices, max_length=4)
     product_link = models.URLField(max_length=2000, default=None)
     # https://dev.to/coderasha/how-to-add-tags-to-your-models-in-django-django-packages-series-1-3704
     tags = TaggableManager(blank=True)

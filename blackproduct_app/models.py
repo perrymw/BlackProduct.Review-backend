@@ -53,9 +53,7 @@ class Product(models.Model):
         ('F&D', 'Food & Drink'),
     ]
     product_name = models.TextField()
-    like_or_dislike = models.BooleanField(default=True)
     owner = models.ForeignKey(Business, on_delete=models.CASCADE)
-    # TODO: make field choices for choicefield of types of products
     product_choice = models.CharField(choices=product_type_choices, max_length=4, default="HCSC")
     product_link = models.URLField(max_length=2000, default=None)
     # https://dev.to/coderasha/how-to-add-tags-to-your-models-in-django-django-packages-series-1-3704
@@ -65,7 +63,6 @@ class Product(models.Model):
     traffic = models.IntegerField(default=0)
     ratings = models.ManyToManyField(BPRUser, through="Rating", )
     review = models.ForeignKey('Reviews', related_name='review',on_delete=models.CASCADE, blank=True, null=True)
-
 
 
     def __str__(self):

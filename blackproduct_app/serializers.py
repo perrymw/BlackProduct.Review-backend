@@ -73,7 +73,6 @@ class ProductSerializer(ModelSerializer):
             'photo',
             'traffic',
             'review',
-            'like_or_dislike',
         ]
 
 

@@ -32,7 +32,8 @@ class Business(models.Model):
 
 class BPRUser(AbstractUser):
     email = models.EmailField(max_length=254, null=False)
-    is_staff = models.BooleanField(default=False)
+    is_review_staff = models.BooleanField(default=False)
+    is_bor_customer = models.BooleanFiels(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
     display_name = models.CharField(max_length=100)
@@ -62,7 +63,7 @@ class Product(models.Model):
     photo = models.ImageField(upload_to='images/', max_length=1001)
     traffic = models.IntegerField(default=0)
     ratings = models.ManyToManyField(BPRUser, through="Rating", )
-    review = models.ForeignKey('Reviews', related_name='review',on_delete=models.CASCADE, blank=True, null=True)
+    review = models.ForeignKey(Reviews, related_name='review',on_delete=models.CASCADE, blank=True, null=True)
 
 
     def __str__(self):

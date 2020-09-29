@@ -16,6 +16,8 @@ django-taggit = "*"
 pillow = "*"
 django-localflavor = "*"
 django-cities = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8.5"

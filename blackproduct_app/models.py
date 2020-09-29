@@ -33,7 +33,7 @@ class Business(models.Model):
 class BPRUser(AbstractUser):
     email = models.EmailField(max_length=254, null=False)
     is_review_staff = models.BooleanField(default=False)
-    is_bor_customer = models.BooleanFiels(default=False)
+    is_bor_customer = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
     display_name = models.CharField(max_length=100)

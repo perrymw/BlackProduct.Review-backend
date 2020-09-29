@@ -22,21 +22,6 @@ class BusinessSerializer(HyperlinkedModelSerializer):
         ]
 
 
-
-class BPRUserSerializer(HyperlinkedModelSerializer):
-    class Meta:
-        model = models.BPRUser
-        fields = [
-            'id',
-            'username',
-            'password',
-            'email',
-            'is_staff',
-            'is_active',
-            'date_joined'
-        ]
-
-
 class ReviewsSerializer(ModelSerializer):
     class Meta:
         model = models.Reviews

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_countries',
     'taggit',
+    'cities'
     'blackproduct_app',
 ]
 

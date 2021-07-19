@@ -56,6 +56,9 @@ class TagListField(ListField):
         return ' '.join(data.values_list('name', flat=True))
 
 class ProductSerializer(ModelSerializer):
+
+    tags = TagListField()
+
     class Meta:
         model = models.Product
         fields = [
@@ -72,7 +75,6 @@ class ProductSerializer(ModelSerializer):
             'review',
             'like_or_dislike',
         ]
-    tags = TagListField()
 
 
 

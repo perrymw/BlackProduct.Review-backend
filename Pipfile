@@ -4,12 +4,18 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+autopep8 = "*"
+flake8 = "*"
 
 [packages]
 django = "*"
-Pillow = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
+django-countries = "*"
+django-taggit = "*"
+pillow = "*"
+django-localflavor = "*"
+django-cities = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8.5"
